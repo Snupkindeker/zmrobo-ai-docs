@@ -118,7 +118,7 @@ RoboEXP is one of several applications for writing code for ZMROBO robots. It is
 
 ### Interface description
 
-When the user opens RoboEXP, they can see its interface. It consists of different elements: Menu bar, Toolbar, Options and the rest of the screen is gray, while no files are opened.
+When the user opens RoboEXP, they can see its interface. It consists of different elements: Menu bar, Toolbar and the rest of the screen is gray, while no files are opened.
 
 #### Menu bar
 
@@ -189,3 +189,27 @@ The **flow view** section features various customization settings:
 3. **Show N parameters** (for G language) - decides how many subroutine parameters should be shown above its icon.
 4. **Back color** (for G language) - the background color.
 5. **Max undo steps (1-20)** - self-explanatory.
+
+### Programming in G language
+
+#### Overview
+
+G language is a graphic programming language, created by ZMROBO and used only in RoboEXP. The program written in this language is stored in a `.rcu` file and looks like a sequence of icons connected to each other. The icons are mostly functions, which are executed from left to right. The G code gets automatically converted to C code, which is then compiled and downloaded to the RCU, so the RCU stores C code only.
+
+#### Window descriptions
+
+There are 5 windows in the G language code editor:
+
+1. **Icons** - a full list of icons divided into 9 sections, 8 of them store built-in icons and the 9th one has icons of referenced subroutines.
+2. **Code** - displays the code, converted to C language.
+3. **Property** - when an icon is selected, show its properties, otherwise is empty.
+4. **Variables** - a full list of local and global variables.
+5. **Output** - shows the result of the current file's last compilation.
+
+#### Variables
+
+Variables in G language can be created, edited and deleted in the Variables Window. There are 2 types of variables: **local** and **global**. **Local** variables are unique for each file. **Global** variables must be created in the main application file, and they also should be added to its subroutine files with same properties if needed to be used there. Every variable has 4 properties:
+1. **Name** - the name of the variable.
+2. **Type** - the variable's type (from C): int, char, long, unsigned int, unsigned char, unsigned long, double or string.
+3. **Default** - the variable's default value.
+4. **Hint** - a comment.
