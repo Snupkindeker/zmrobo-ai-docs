@@ -213,3 +213,35 @@ Variables in G language can be created, edited and deleted in the Variables Wind
 2. **Type** - the variable's type (from C): int, char, long, unsigned int, unsigned char, unsigned long, double or string.
 3. **Default** - the variable's default value.
 4. **Hint** - a comment.
+
+#### Icon descriptions
+
+Every icon in the code can have up to 2 connections (except Start and If): one on the left side and one on the right side. The program starts with the Start icon, and then the user can drag icons out of the Icons Window and connect them to each other. Unconnected or incorrectly connected icons are black & white. The unconnected icons are completely ignored by the compiler. They are also ignored if they're connected to each other and not to the Start icon.
+
+The 205 built-in icons are divided into 8 categories:
+1. **Flow Control** - basic blocks like Start, If, While, For and so on. Contains 9 icons.
+2. **Performer** - motor and servo control. Contains 41 icons.
+3. **Light Sensor** - light, color and line-tracking sensors control. Contains 26 icons.
+4. **Touch Sensor** - touch sensor control. Contains 6 icons.
+5. **Other Sensor** - other sensors control. Contains 38 icons.
+6. **Built In** - controller's built-in functions like delay, mic, music play etc. Contains 26 icons.
+7. **Display** - controller's display control. Contains 27 icons.
+8. **Wireless** - wireless communications. Contains 32 icons.
+
+Here's the description of every single icon:
+##### 1. Flow Control
+
+| Name       | Description                                                                                                                                                                                                                                                                                                |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| If         | A basic `if` operator. Creates an end icon when placed.<br>Has 2 connection "ports" on the right side, the upper one is<br>for code that executes when the condition is `true`, the lower<br>one - for the `else` code. The end icon also has 2 "slots" on<br>the left side for corresponding connections. |
+| While      | A basic `while` cycle. Creates an end icon when placed.                                                                                                                                                                                                                                                    |
+| For        | A basic `for` cycle. Creates an end icon when placed.                                                                                                                                                                                                                                                      |
+| Calculate  | Useful to assign a value to a variable, C-like syntax.<br>`;` at the end isn't needed.                                                                                                                                                                                                                     |
+| Continue   | A basic `continue` operator.                                                                                                                                                                                                                                                                               |
+| Break      | A basic `break` operator.                                                                                                                                                                                                                                                                                  |
+| Return     | A basic `return` operator.                                                                                                                                                                                                                                                                                 |
+| CodeEditor | Lets the user insert pieces of C-code inside the G-code.                                                                                                                                                                                                                                                   |
+| Start      | Start of the program.                                                                                                                                                                                                                                                                                      |
+
+##### 2. Performer
+
