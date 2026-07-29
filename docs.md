@@ -109,3 +109,83 @@ The last but not least, **plastic parts** category has a self-explanatory name. 
 1. **Wheels**. ZMROBO has different types of wheels, for example: mecanum wheels, 65 x 25 mm wheels with silicone tires and 56 x 26 mm wheels with rubber tires. Also there is the metal ball caster (similar to LEGO MINDSTORMS EV3), a plastic ball caster and a small red metal ball caster (JMP-BP-1276).
 2. Beams, pegs, axles, gears, frames and plates are all similar to LEGO (except being 1.5x bigger).
 3. **Disassembly tools** (JMC-JM-0238) are great for disassembling builds.
+
+## RoboEXP software
+
+### Overview
+
+RoboEXP is one of several applications for writing code for ZMROBO robots. It is considered the most advanced of them all, because it supports a convenient graphical "G language" and the C language, while other applications use Scratch-like blocks and Python. There are 2 file types in RoboEXP: **application** and **subroutine**. Subroutines can be referenced in applications to organize code.
+
+### Interface description
+
+When the user opens RoboEXP, they can see its interface. It consists of different elements: Menu bar, Toolbar, Options and the rest of the screen is gray, while no files are opened.
+
+#### Menu bar
+
+There are different buttons on the Menu bar which open a drop-down menu of options upon being clicked on. Here's the list of these buttons and their menus:
+
+##### 1. File
+
+The **file** menu features basic options: New, Open, Open, Open Example Programs, Save, Save as, Save all, Close, Close all files, Export As Code Application (saves the file as an application), Export As Flow Subroutine (saves the file as a subroutine), Print, Recent Files, Update (RoboEXP) and Exit. There's also the Convert Old Projects option, which helps you make a project created in RoboEXP 2.1 and below compatible to newer versions. The code is stored in paired files - .rcu and .c with the same name.
+
+##### 2. Edit
+
+The **edit** menu features classic actions: Undo, Redo, Cut, Copy, Paste, Delete and Select all.
+
+##### 3. View
+
+The **view** menu lets the user show and hide different interface windows: Icons Window (G language only), Code Window (G language only), Property Window (G language only), Variable Window (G language only), Template Code Window (C language only) and Output Window.
+
+##### 4. Project
+
+The **project** menu contains options to control the project:
+1. **New Private Subroutine** (G language only) - creates a subroutine file in the same language and folder with a custom name and automatically references it in the current project.
+2. **Reference Existing Subroutine** (G language only) - opens a file manager window for the user to select a .rcu subroutine file to reference. This is required to start using it in the project, if it's not referenced yet.
+3. **Open Selected Subroutine** (G language only) - opens the code of the selected subroutine.
+4. **Update Private Subroutine** (G language only) - refreshes the selected subroutine (required when the subroutines parameters/return type have changed).
+5. **Private Subroutines Manager** (G language only) - opens the manager window, which allows the user to add/remove subroutines from the project and sort them in the icon list.
+6. **Project Properties** - opens the project properties window, which allows customization of the file's caption, author and description, return type and description and parameters (in a subroutine).
+
+##### 5. Tool
+
+The **tool** menu has different tools:
+1. **System Library** - lets the user customize the built-in library of functions.
+2. **Compile** - compiles the file and shows the result in the Output Window. Also shows errors in referenced subroutines.
+3. **Download** (Bluetooth and wired) - downloads the file to the RCU. Compiles the file beforehand if Compile Before Download is enabled in Options -> Global Settings.
+4. **Options** - opens the Options window.
+
+##### 6. Window
+
+The **window** menu lets the user cycle between opened RoboEXP windows and files.
+
+##### 7. Help
+
+The **help** menu features 2 buttons:
+1. **Help topics** - opens a `.chm` documentation file.
+2. **About** - opens a window with information about your RoboEXP version, selected controller type and a link to ZMROBO's website.
+
+#### Toolbar
+
+The **toolbar** is a line of icons that help the user access most frequently used actions faster. At the end it shows the selected controller type, which opens the Options window when double-clicked.
+
+#### Options
+
+The **options** window lets the user control the software's behavior. It features 3 sections of settings:
+##### 1. Software Type
+
+The **software type** section has 2 settings: software type (controller type) and language. There are 3 languages in RoboEXP: English, Chinese (Simplified) and Chinese (Traditional). Changing these 2 settings won't do anything unless RoboEXP is restarted.
+
+##### 2. Global Settings
+
+The **global settings** section has several useful settings, for example:
+1. **Compile file before download** - self-explanatory, enabled by default, not recommended to be disabled.
+2. **Show message box after download** - decides if the "Download file completed." message should be shown after downloading a file to RCU.
+
+##### 3. Flow View
+
+The **flow view** section features various customization settings:
+1. **Show code line** (for G language) - decides if subroutine's C syntax should be displayed in the Property Window when the subroutine is selected.
+2. **Show description in tip** (for G language) - decides if a subroutine's description should be displayed in the tip when hovering its icon.
+3. **Show N parameters** (for G language) - decides how many subroutine parameters should be shown above its icon.
+4. **Back color** (for G language) - the background color.
+5. **Max undo steps (1-20)** - self-explanatory.
