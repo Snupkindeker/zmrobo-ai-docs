@@ -278,7 +278,7 @@ Here's the description of every single icon:
 | Wait for Dark                       | `SetWaitForDark(which, value);`                              | Wait for the photoelectric sensor detection value to be less than the set value before continuing executing the program after this icon.                                                         | **which**: sensor port (\_P1\_-\_P8\_).<br>**value**: The larger the value, the closer it is to white to meet the condition. Valid value range: 0-4095.                                                                                                     |
 | Wait for Light                      | `SetWaitForLight(which, value);`                             | Wait for the photoelectric sensor detection value to be greater than the set value before continuing executing the program after this icon.                                                      | **which**: sensor port (\_P1\_-\_P8\_).<br>**value**: The larger the value, the closer it is to white to meet the condition. Valid value range: 0-4095.                                                                                                     |
 | Wait for Darker                     | `SetWaitForDarker(which, value);`                            | Wait for the photoelectric sensor detection value to decrease by the set range value before executing the program after this icon.                                                               | **which**: sensor port (\_P1\_-\_P8\_).<br>**value**: The larger the value, the closer it is to white to meet the condition. Valid value range: 0-4095.                                                                                                     |
-| Wait for Ligher                     | `SetWaitForLighter(which, value);`                           | Wait for the photoelectric sensor detection value to increase by the set range value before executing the program after this icon.                                                               | **which**: sensor port (\_P1\_-\_P8\_).<br>**value**: The larger the value, the closer it is to white to meet the condition. Valid value range: 0-4095.                                                                                                     |
+| Wait for Lighter                    | `SetWaitForLighter(which, value);`                           | Wait for the photoelectric sensor detection value to increase by the set range value before executing the program after this icon.                                                               | **which**: sensor port (\_P1\_-\_P8\_).<br>**value**: The larger the value, the closer it is to white to meet the condition. Valid value range: 0-4095.                                                                                                     |
 | Gray scale measuring (Digital)      | `GetLightSensorData(which);`                                 | Read the digital value detected by the photoelectric sensor connected to a certain port and store it in the selected storage variable. Returns 0 if darker than gray, 1 - if brighter than gray. | **which**: sensor port (\_P1\_-\_P8\_).                                                                                                                                                                                                                     |
 | Gray scale measuring                | `GetLightSensor(which);`                                     | Read the digital value detected by the photoelectric sensor connected to a certain port and store it in the selected storage variable. Returns a number in 0-4095 range.                         | **which**: sensor port (\_P1\_-\_P8\_).                                                                                                                                                                                                                     |
 | Anti-light gray scale               | `GetAntiLight(which);`                                       | Read the value of the photoelectric detection of the connected port (after anti-interference processing) and store it in the selected storage variable.                                          | **which**: sensor port (\_P1\_-\_P8\_).                                                                                                                                                                                                                     |
@@ -366,3 +366,47 @@ Here's the description of every single icon:
 | Bluetooth Receives Data | `GetBluetoothData();`     | Return data sent via Bluetooth from a paired controller.                                       |                                             |
 | SetNFC                  | `SetNFC(which);`          | Make the NFC module try to make a communication ONCE. Recommended to be put in a `while` cycle | **which**: NFC module port (\_P1\_-\_P8\_). |
 | Read NFC status value   | `GetNFCStatus(which);`    | Return NFC module communication status:<br>1 - success<br>2 - error<br>3 - timeout             | **which**: NFC module port (\_P1\_-\_P8\_). |
+
+**Note**: there are no typos in this documentation. Everything that seems like a typo is actually a typo in ZMROBO libraries and not in this document.
+
+### Programming in C language
+
+#### Overview
+
+Programming in C language is also convenient and pretty simple. Here's a template of code for each file type (Application & Subroutine):
+
+#### Application template
+
+```c
+#include <stm32h7xx_hal.h> // Required include
+#include "HardwareInfo.c" // Required include
+#include "JMLib.c" // Required include
+
+#include <SetWaitForTime.h> // Used function includes
+
+int main(void) {
+	XXRCU_Init(); // Replace XX with M6, E6, E7 etc.
+	SetWaitForTime(1); // Example
+	// Your code goes here.
+}
+```
+
+Make sure to also include every single function you use `.h`.
+#### Subroutine template
+
+```c
+// global area
+#include <stm32h7xx_hal.h> // Required include
+#include "HardwareInfo.c" // Required include
+#include "JMLib.c" // Required include
+
+#include <SetWaitForTime.h> // Used function includes
+
+void func(int param1, string param2...) {
+	// code area
+	SetWaitForTime(1); // Example
+	// Your code goes here.
+}
+```
+
+Make sure to also include every single function you use `.h`.
