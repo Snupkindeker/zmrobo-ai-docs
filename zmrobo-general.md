@@ -518,4 +518,10 @@ There are 2 main options to create ZMROBO 3D models:
    ```powershell
    "path_to_roboexp\Compiler\JMCompiler.exe" "path_to_code_file" "XXRCU" "main/func" "working_directory" "search_paths_separated_by_*" "path_to_roboexp\Robots\XXRCU\Include"
    ```
-   Replace `XXRCU` with `E6RCU`, `E7RCU`, `M6RCU`, etc. Replace `main/func` with `main` if you want to compile the file as an Application, and `func` - if you want to compile it as a Subroutine file.
+   Replace `XXRCU` with `E6RCU`, `E7RCU`, `M6RCU`, etc. Replace `main/func` with `main` if you want to compile the file as an Application, and `func` - if you want to compile it as a Subroutine file. If you replace it with something except `main` and `func`, the compiler won't work.
+
+> **⚠️ Important note about search paths:**  
+> The `search_paths_separated_by_*` argument expects paths to be joined with the `*` character (asterisk).  
+> For example:  
+> `"C:\RoboEXP\Robots\E7RCU\Include*C:\RoboEXP\JMLib"`  
+> **Do not use** semicolons (`;`) or commas (`,`), as they will not be parsed correctly by `JMCompiler.exe`.
