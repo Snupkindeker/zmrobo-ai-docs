@@ -387,37 +387,21 @@ Programming in C language is also convenient and pretty simple. Here's a templat
 
 #include <SetWaitForTime.h> // Used function includes
 
+#include "func.c" // Custom subroutine include
+
+// Define global variables
+int var = 1;
+
 int main(void) {
 	XXRCU_Init(); // Replace XX with M6, E6, E7 etc.
 	SetWaitForTime(1); // Example
+	func(3); // Subroutine usage example
 	// Your code goes here.
 }
 ```
 
-Make sure to also include every single function you use `.h`.
+Make sure to also include every single function you use `.h`. Usage of angle brackets and quotation marks in includes is clearly shown. `while(1);` at the end isn't necessary, the controller executes it anyway.
 #### Subroutine template
-
-```c
-// global area
-#include <stm32h7xx_hal.h> // Required include
-#include "HardwareInfo.c" // Required include
-#include "JMLib.c" // Required include
-
-#include <SetWaitForTime.h> // Used function includes
-
-void func(int param1, string param2...) {
-	// code area
-	SetWaitForTime(1); // Example
-	// Your code goes here.
-}
-```
-
-Make sure to also include every single function you use `.h`.
-
-#### Port variables
-
-Ports are required for use of almost every built-in function. Use `_M1_, _M2,..., _M8_` and `_P1_,...,_P8_` variables to reference controller ports.
-Example:
 
 ```c
 // global area
@@ -428,8 +412,36 @@ Example:
 #include <SetWaitForTime.h> // Used function includes
 #include <SetMotor.h>
 
-void func(int param1, string param2...) {
+// Extern global variables
+extern int var;
+
+void func(int arg) { // Function definition
 	// code area
+	SetWaitForTime(var); // Example
+	if (arg < -100) arg = -100;
+	if (arg > 100) arg = 100;
+	SetMotor(_M1_, arg);
+	// Your code goes here.
+}
+```
+
+Make sure to also include every single function you use `.h`. Usage of angle brackets and quotation marks in includes is clearly shown.
+
+#### Port variables
+
+Ports are required for use of almost every built-in function. Use `_M1_, _M2,..., _M8_` and `_P1_,...,_P8_` variables to reference controller ports.
+Example:
+
+```c
+#include <stm32h7xx_hal.h> // Required include
+#include "HardwareInfo.c" // Required include
+#include "JMLib.c" // Required include
+
+#include <SetWaitForTime.h> // Used function includes
+#include <SetMotor.h>
+
+int main(void) {
+	E7RCU_Init();
 	SetMotor(_M1_, 100);
 	SetWaitForTime(1);
 	SetMotor(_M1_, 0);
@@ -487,3 +499,10 @@ Every user of the AI vision module (JMP-BE-1743) eventually has to update/reinst
 | IO mode      | DIO mode                      |
 4. **Click download**, but first make sure the connection cable is plugged in fully and won't disconnect while downloading. Wait for the download process to finish, the module will turn on and be ready for use.
 5. **Close kflash and enjoy new firmware!**.
+
+### How to create ZMROBO 3D models
+
+There are 2 main options to create ZMROBO 3D models:
+1. **Stud.io** or Bricklink Studio 2.0. To add ZMROBO parts to it, download this installer: https://www.dropbox.com/scl/fi/xgc67lkfs37d2naf61iv1/StudioUpdatePackage_2024.exe?rlkey=bb42n5eqcfl1p59g5l6syb3du&st=8ycnpv5p&dl=1 and execute it before opening Studio 2.0. ZMROBO parts can be connected to most of the LEGO parts in Stud.io.
+2. **RoboBuilder** - official software from ZMROBO. Is still in active development and is raw and buggy.
+3. **RoboSim (unrecommended)**. Inconvenient to use and only has a small range of parts, but allows building a custom map and can simulate the robot actually working on it.
