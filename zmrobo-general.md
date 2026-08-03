@@ -481,6 +481,8 @@ Here are some well-known bugs in RoboEXP & ZMROBO components and ways to fix the
 https://www.dropbox.com/scl/fi/gr3onxk2fgbg57l1t8zhy/BE1743V3.7_RESCUE.kfpkg?rlkey=oqemhd35ggr03ypp63rd0otid&st=lyns08na&dl=1
 follow instructions in the "AI vision module firmware install" below.
 
+## Useful guides
+
 ### AI vision module firmware installation guide
 
 Every user of the AI vision module (JMP-BE-1743) eventually has to update/reinstall firmware on it. Here's the tutorial to do so:
@@ -506,3 +508,14 @@ There are 2 main options to create ZMROBO 3D models:
 1. **Stud.io** or Bricklink Studio 2.0. To add ZMROBO parts to it, download this installer: https://www.dropbox.com/scl/fi/xgc67lkfs37d2naf61iv1/StudioUpdatePackage_2024.exe?rlkey=bb42n5eqcfl1p59g5l6syb3du&st=8ycnpv5p&dl=1 and execute it before opening Studio 2.0. ZMROBO parts can be connected to most of the LEGO parts in Stud.io.
 2. **RoboBuilder** - official software from ZMROBO. Is still in active development and is raw and buggy.
 3. **RoboSim (unrecommended)**. Inconvenient to use and only has a small range of parts, but allows building a custom map and can simulate the robot actually working on it.
+
+### How to use ZMROBO's C compiler in other IDEs
+
+**Note**: RoboEXP still has to be installed.
+
+1. **Write your code** in any IDE, it should be in a `.c`-file.
+2. Run this command in `cmd` or `powershell`:
+   ```powershell
+   "path_to_roboexp\Compiler\JMCompiler.exe" "path_to_code_file" "XXRCU" "main/func" "working_directory" "search_paths_separated_by_*" "path_to_roboexp\Robots\XXRCU\Include"
+   ```
+   Replace `XXRCU` with `E6RCU`, `E7RCU`, `M6RCU`, etc. Replace `main/func` with `main` if you want to compile the file as an Application, and `func` - if you want to compile it as a Subroutine file.
