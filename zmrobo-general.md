@@ -1,3 +1,4 @@
+# General ZMROBO & RoboEXP documentation
 ## Overview
 
 This is the ultimate documentation to writing code for ZMROBO robots via RoboEXP software. The documentation is meant to be used by language models to be more competent in this topic.
@@ -109,6 +110,8 @@ The last but not least, **plastic parts** category has a self-explanatory name. 
 1. **Wheels**. ZMROBO has different types of wheels, for example: mecanum wheels, 65 x 25 mm wheels with silicone tires and 56 x 26 mm wheels with rubber tires. Also there is the metal ball caster (similar to LEGO MINDSTORMS EV3), a plastic ball caster and a small red metal ball caster (JMP-BP-1276).
 2. Beams, pegs, axles, gears, frames and plates are all similar to LEGO (except being 1.5x bigger).
 3. **Disassembly tools** (JMC-JM-0238) are great for disassembling builds.
+
+**Note**: one ZMROBO stud is approximately 1 cm.
 
 ## RoboEXP software
 
@@ -410,3 +413,77 @@ void func(int param1, string param2...) {
 ```
 
 Make sure to also include every single function you use `.h`.
+
+#### Port variables
+
+Ports are required for use of almost every built-in function. Use `_M1_, _M2,..., _M8_` and `_P1_,...,_P8_` variables to reference controller ports.
+Example:
+
+```c
+// global area
+#include <stm32h7xx_hal.h> // Required include
+#include "HardwareInfo.c" // Required include
+#include "JMLib.c" // Required include
+
+#include <SetWaitForTime.h> // Used function includes
+#include <SetMotor.h>
+
+void func(int param1, string param2...) {
+	// code area
+	SetMotor(_M1_, 100);
+	SetWaitForTime(1);
+	SetMotor(_M1_, 0);
+}
+```
+This code starts the `M1` motor at full speed for 1 second and then stops it.
+
+### Programming tips
+
+Here are some useful programming tips:
+
+#### 1. Stopping motors
+
+If it's needed to stop a motor instantly and completely, it's better to use `SetMotor(_MOTOR_, 0);` or `SetMotorConstSpeed(_MOTOR_, 0);` (set speed to 0). If you need to stop moving motors and let them keep their momentum for a few seconds, use `SetMotorFree(_MOTOR_);`.
+
+#### 2. SetMotorConstSpeedValue(...);
+
+A common mistake is not putting `SetMotorConstSpeedValue(...);` for each motor that `SetMotorConstSpeed(...);` is used for in the program. Without `SetMotorConstSpeedValue(...);`, `SetMotorConstSpeed(...);` may not work or make motors move bugged and shaky. This happens when motor's encoder CPR is set incorrectly as well. Also `SetMotorConstSpeed(...);` stops the motor for about half a second when quickly changing motor moving direction (changing speed from positive to negative or from negative to positive).
+
+#### 3. Use auto-align in G language
+
+When quickly placing icons the program eventually starts to look messy. To fix this you can click the Auto Align button on the Toolbar. It will place all icons, that are connected to the Start icon in a perfectly straight line and place unconnected icons in lines below it.
+
+#### 4. Well-known bugs
+
+Here are some well-known bugs in RoboEXP & ZMROBO components and ways to fix them:
+
+##### 1. Compiler localization issue
+
+**Bug**: in RoboEXP 6.0.7 and below, the Output window shows the full error description only when the language is set to any kind of Chinese. In English it just says "Cannot find compiler!".
+**Fix**: update RoboEXP to newer versions.
+
+##### 2. AI vision module (JMP-BE-1743) "Red Screen Of Death"
+
+**Bug**: There's a known issue, when the AI vision module suddenly shows the "Red Screen Of Death" - a black screen with red text "ZMROBO please restart" or the same text in Chinese. This happens when choosing a specific mode on the module or when the module turns on.
+**Fix**: download special rescue firmware for AI vision module:
+https://www.dropbox.com/scl/fi/gr3onxk2fgbg57l1t8zhy/BE1743V3.7_RESCUE.kfpkg?rlkey=oqemhd35ggr03ypp63rd0otid&st=lyns08na&dl=1
+follow instructions in the "AI vision module firmware install" below.
+
+### AI vision module firmware installation guide
+
+Every user of the AI vision module (JMP-BE-1743) eventually has to update/reinstall firmware on it. Here's the tutorial to do so:
+
+1. **Choose firmware version** depending on what do you want to do. If you ran into the "Red Screen Of Death", you should download special rescue firmware: https://www.dropbox.com/scl/fi/gr3onxk2fgbg57l1t8zhy/BE1743V3.7_RESCUE.kfpkg?rlkey=oqemhd35ggr03ypp63rd0otid&st=lyns08na&dl=1. Then/or you should download the latest version of firmware from the official ZMROBO website: https://oss.zmrobo.com/zmrobo/product/JMP-BE-1743/BE1743%E4%BA%A7%E5%93%81%E8%B5%84%E6%96%99V4.0.zip. If you downloaded the rescue firmware, you should also download `kflash_gui.zip`: https://www.dropbox.com/scl/fi/wfjhcdvseureon9j9al2v/kflash_gui.zip?rlkey=memsm47hobkzjxb3g65grbphd&st=nh9xgpnb&dl=1 and extract it. If you downloaded the normal firmware, just extract the archive and kflash_gui is already included in there.
+2. **Connect AI vision module to your computer**. Use any USB Type-C cable for that. Preferably don't use ZMROBO cables, because they can disconnect while downloading firmware.
+3. **Open kflash gui**. Open `kflash_gui_x64.exe` or `kflash_gui_x86.exe` according to your system. If needed, change language to Chinese/English by clicking the button in the left upper corner and restarting kflash_gui. Tap the blue `Open file` button and choose your firmware's `.kfpkg` file. Choose these settings:
+   
+| Setting name | Setting value                 |
+| ------------ | ----------------------------- |
+| Board        | AUTO:BE-1743/BE-1748/BE-1755  |
+| Burn to      | Flash                         |
+| Port         | (should be set automatically) |
+| Baudrate     | 1500000                       |
+| Speed mode   | Slow mode                     |
+| IO mode      | DIO mode                      |
+4. **Click download**, but first make sure the connection cable is plugged in fully and won't disconnect while downloading. Wait for the download process to finish, the module will turn on and be ready for use.
+5. **Close kflash and enjoy new firmware!**.
