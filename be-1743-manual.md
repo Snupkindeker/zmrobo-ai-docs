@@ -34,15 +34,15 @@ This is an unofficial documentation for ZMROBO's AI vision module (BE-1743), mad
 	12) [[#12. Image classification learning|Image classification learning]]
 	13) [[#13. Traffic sign recognition|Traffic sign recognition]]
 	14) [[#14. Five-channel line following|Five-channel line following]]
-	Speech recognition
-7. FAQs
-8. Precautions
-9. Firmware release notes
-10. Interfaces description
-    1) USB-C interface
-    2) RJ11 cable interface
-11. Firmware update
-
+	[[#Speech recognition|Speech recognition]]
+7. [[#7. FAQs|FAQs]]
+8. [[#8. Precautions|Precautions]]
+9. [[#9. Firmware release notes|Firmware release notes]]
+10. [[#10. Interfaces description|Interfaces description]]
+    1) [[#USB-C interface|USB-C interface]]
+    2) [[#RJ-11 cable interface|RJ11 cable interface]]
+11. [[#11. Firmware update|Firmware update]]
+[[]]
 ## 1. Description
 
 BE-1743 AI vision module is an electronic device that integrates multiple artificial intelligence algorithms. By using it, visual and speech recognition applications can be completed. 13 built-in visual recognition functions: color detection, QR code recognition, ball recognition, road recognition, face detection, image classification, color recognition learning, face recognition learning, gesture recognition, image classification learning, traffic sign recognition, and five-channel line patrol. It also has voice activation and speech recognition functions.
@@ -303,7 +303,7 @@ It can recognize 5 types of traffic signs and return the corresponding ID number
 
 #### 14. Five-channel line following
 
-><span style="color: red;">The firmware needs to be updated to version 2.1. For the update method, please refer to the "Firmware update" section.</span>
+><span style="color: red;">The firmware needs to be updated to version 2.1. For the update method, please refer to the "</span>[[#11. Firmware update|Firmware update]]<span style="color: red;">" section.</span>
 
 The AI vision module can recognize black and white lines through five photoelectric sensor channels. It detects black lines by default. You can send a command in the RoboExp software to make it choose to detect white lines. If the photoelectric sensor detects a line, 1 will be returned, otherwise 0 will be returned. The data bits are 1, 2, 3, 4, and 5 respectively.
 
