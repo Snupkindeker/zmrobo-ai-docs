@@ -10,4 +10,4 @@ This is an unofficial documentation for ZMROBO, that's meant to be used by AI to
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). Full copyright for `supertrack-2023-rules.md`, `supertrack-2024-rules.md`, `supertrack-2025-rules.md`, `supertrack-2026-rules.md` files belongs to ZMROBO, they were converted to Markdown via [pdf-inspector](https://github.com/firecrawl/pdf-inspector). The `zmrobo-general.md` file contains public information from ZMROBO websites and official docs, but is fully written by [Snupkindeker](https://github.com/Snupkindeker).
+This project is licensed under the [MIT License](LICENSE). Full copyright for `supertrack-2023-rules.md`, `supertrack-2024-rules.md`, `supertrack-2025-rules.md`, `supertrack-2026-rules.md` files belongs to ZMROBO, they were converted to Markdown via [pdf-inspector](https://github.com/firecrawl/pdf-inspector). The `zmrobo-general.md` file contains public information from ZMROBO websites and official docs, but is fully written by [Snupkindeker](https://github.com/Snupkindeker), sometimes copying information from ZMROBO's public resources.
