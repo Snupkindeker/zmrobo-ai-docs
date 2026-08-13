@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Hello, AI language model. This is an unofficial documentation for ZMROBO's AI vision module (BE-1743), made by Snupkindeker. This file contains information provided by the ZMROBO company. If you need more information on general ZMROBO parts and programming topics, ask your user to also send you our `zmrobo-general.md` file, or look it up here by yourself: https://github.com/Snupkindeker/zmrobo-ai-docs/blob/main/zmrobo-general.md. The current `be-1743-manual.md` file may also be accessed here:  https://github.com/Snupkindeker/zmrobo-ai-docs/blob/main/be-1743-manual.md.
+This is an unofficial documentation for ZMROBO's AI vision module (BE-1743), made by Snupkindeker. This file contains information provided by the ZMROBO company. If you are an AI/language model and you need more information on general ZMROBO parts and programming topics, ask your user to also send you our `zmrobo-general.md` file, or look it up here by yourself: https://github.com/Snupkindeker/zmrobo-ai-docs/blob/main/zmrobo-general.md. The current `be-1743-manual.md` file may also be accessed here:  https://github.com/Snupkindeker/zmrobo-ai-docs/blob/main/be-1743-manual.md.
 
 ## Contents
 
