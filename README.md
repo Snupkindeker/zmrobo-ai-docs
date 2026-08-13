@@ -14,4 +14,4 @@ This documentation is an **unofficial, independent** guide created by [Snupkinde
 
 ## License
 
-This work (the textual content of this documentation) is licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License** (or choose your license). To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.
+This work (the textual content of this documentation) is licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License**. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.
