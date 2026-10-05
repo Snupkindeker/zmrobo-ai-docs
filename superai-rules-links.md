@@ -18,4 +18,4 @@ The original source: https://superai.zmrobo.com/rulelist
 6. [2025 Super AI SuperTrack Interstellar Legend game rules](https://oss.zmrobo.com/superai/rule/39/2025%20Super%20AI超级轨迹赛--筑梦星空与虚拟星际传奇.pdf).
 7. [2024 Super AI SuperTrack Interstellar Crossing game rules](https://oss.zmrobo.com/superai/rule/24/2024年SuperAI星际穿越-主题与规则.pdf).
 
-> \*The game rules aren't translated to English yet (last checked on October 5th, 2026). The name translations to English are **not official** and were logically transferred from the 2026 competition.
+> \*The 2027 game rules aren't translated to English yet (last checked on October 5th, 2026). The name translations to English are **not official** and were logically transferred from the 2026 competition.
