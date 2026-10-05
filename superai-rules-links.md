@@ -10,8 +10,8 @@ The original source: https://superai.zmrobo.com/rulelist
 
 > **Note**: These links point to official PDF files hosted by ZMROBO. The organizers may update the rules or change the link structure. For the most up-to-date versions, always check the official source above.
 
-1. [2027 Super AI SuperTrack Star Journey game rules*](https://oss.zmrobo.com/superai/rule/51/2027年SuperAI超级轨迹系列赛-星宇奇航-规则.pdf).
-2. [2027 Super AI SuperTrack Star Cruise game rules*](https://oss.zmrobo.com/superai/rule/50/2027年SuperAI超级轨迹系列赛【星际巡航】.pdf).
+1. [2027 Super AI SuperTrack Star Journey game rules](https://oss.zmrobo.com/superai/rule/51/2027年SuperAI超级轨迹系列赛-星宇奇航-规则.pdf)*.
+2. [2027 Super AI SuperTrack Star Cruise game rules](https://oss.zmrobo.com/superai/rule/50/2027年SuperAI超级轨迹系列赛【星际巡航】.pdf)*.
 3. [2026 Super AI SuperTrack Star Journey game rules](https://oss.zmrobo.com/superai/rule/41/2026年SuperAI超级轨迹系列赛-星宇奇航-主题与规则（普及组）.pdf).
 4. [2026 Super AI SuperTrack Star Cruise game rules](https://oss.zmrobo.com/superai/rule/42/2026年SuperAI超级轨迹系列赛-星际巡航-主题与规则（挑战组）.pdf).
 5. [2026 Super AI SmartCraft Challenge game rules](https://oss.zmrobo.com/superai/rule/43/2026年智达天工项目任务说明.pdf).
