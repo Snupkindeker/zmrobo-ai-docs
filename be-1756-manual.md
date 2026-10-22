@@ -9,11 +9,49 @@ This is an unofficial documentation for ZMROBO's AI CAM 2.0 (BE-1756), made by S
 1. [[#1. Description|Description]]
 2. [[#2. Technical specifications|Technical specifications]]
 3. [[#3. Basic operations|Basic operations]]
+	[[#3.1. Powering the device]]
+	[[#3.2. Entering applications]]
+		[[#3.2.1. Connecting to Wi-Fi]]
+		[[#3.2.2. Switching language]]
 4. [[#4. Main feature description|Main feature description]]
-5. Programming applications
-6. Interface definition
-7. System image flashing
-8. Notes
+	[[#4.1. Screen coordinate system]]
+	[[#4.2. Main feature description]]
+		[[#4.2.1. Face Recognition]]
+			[[#4.2.1.1. Face Detection]]
+			[[#4.2.1.2. Face Learning and Recognition]]
+			[[#4.2.1.3. Saving and Clearing Data]]
+		[[#4.2.2. Tag Recognition]]
+			[[#4.2.2.1. AprilTag Recognition]]
+			[[#4.2.2.2. QR-Code Recognition]]
+		[[#4.2.3. Object Recognition]]
+			[[#4.2.3.1. Object Detection]]
+			[[#4.2.3.2. Object Learning and Recognition]]
+			[[#4.2.3.3. Saving and Clearing Data]]
+		[[#4.2.4. Color Recognition]]
+			[[#4.2.4.1. Color Sampling and Recognition]]
+			[[#4.2.4.2. Inverse Calibration (Optional)]]
+			[[#4.2.4.3. Color Learning]]
+			[[#4.2.4.4. Saving and Clearing Data]]
+		[[#4.2.5. Road Detection]]
+			[[#4.2.5.1. Line Sampling and Detection]]
+			[[#4.2.5.2. Inverse Calibration (Optional)]]
+			[[#4.2.5.3. Data Output]]
+		[[#4.2.6. Gesture Recognition]]
+		[[#4.2.7. Human Detection]]
+		[[#4.2.8. Object Classification]]
+			[[#4.2.8.1. Learning an object]]
+			[[#4.2.8.2. Classifying objects]]
+			[[#4.2.8.3. Saving and clearing data]]
+		[[#4.2.9. Image Classification]]
+		[[#4.2.10. Others]]
+			[[#4.2.10.1. Camera]]
+			[[#4.2.10.2. Store]]
+5. [[#5. Programming Applications|Programming Applications]]
+	[[#5.1. RoboCode]]
+	[[#5.2. RoboEXP]]
+6. [[#6. Interface Definition|Interface Definition]]
+7. [[#7. System Image Flashing|System Image Flashing]]
+8. [[#8. Notes|Notes]]
 
 ## 1. Description
 
@@ -51,7 +89,7 @@ This is an unofficial documentation for ZMROBO's AI CAM 2.0 (BE-1756), made by S
 | Wired interfaces         | **Type-C USB 2.0** (supports power supply, Device/Host mode, USB camera), **PH 1.25 mm 6-pin serial port**                                  |
 | Sensors                  | 6-axis gyroscope, analog microphone, 1× user button, 1× reset button                                                                        |
 | Indicators               | Power indicator, system status indicator                                                                                                    |
-| Power Supply             | Operating voltage: 4.5–5 V. Operating current: ≥200 mA                                                                                      |
+| Power Supply             | Operating voltage: 4.5–5 V. Operating current: ≥200 mA, recommended power supply: ≥5V 500mA.                                                |
 | RTC                      | Onboard BM8653 RTC + coin-cell battery (backup timekeeping when powered off)                                                                |
 | Size                     | 20mm × 70mm × 63mm                                                                                                                          |
 
@@ -137,7 +175,7 @@ In the **"QR Code"** mode, the system can recognize QR codes containing numbers,
 
 #### 4.2.3. Object Recognition
 
-The AI CAM can recognize **80 predefined object categories**, including humans, animals, vehicles, outdoor facilities, daily items, and food.
+The AI CAM can recognize **80 predefined object categories**, including humans, animals, vehicles, outdoor facilities, daily items, and food. To recognize any learnt object, use [[#4.2.8. Object Classification|Object Classification]].
 
 Supported object classes are listed below (based on the COCO dataset):
 
@@ -149,7 +187,7 @@ Supported object classes are listed below (based on the COCO dataset):
 | Outdoor facilities  | traffic light, fire hydrant, stop sign, parking meter, bench                                                                            |
 | Animals             | bird, cat, dog, horse, sheep, cow, elephant, bear, zebra, giraffe                                                                       |
 | Personal items      | backpack, umbrella, handbag, tie, suitcase                                                                                              |
-| Sports equipment    | risbee, skis, snowboard, sports ball, kite, baseball bat, baseball glove, skateboard, surfboard, tennis racket                          |
+| Sports equipment    | frisbee, skis, snowboard, sports ball, kite, baseball bat, baseball glove, skateboard, surfboard, tennis racket                         |
 | Kitchenware & food  | - bottle, wine glass, cup, fork, knife, spoon, bowl<br>- banana, apple, sandwich, orange, broccoli, carrot, hot dog, pizza, donut, cake |
 | Furniture           | chair, couch, potted plant, bed, dining table, toilet, TV                                                                               |
 | Electronics         | laptop, mouse, remote, keyboard, cell phone                                                                                             |
@@ -194,7 +232,7 @@ Place the target color in the center area of the screen. Select any three differ
 >
 >LAB is a color space designed to better match human visual perception. Its key advantage is that the L component is independent from the color components (A and B). Therefore, adjusting the L value mainly affects brightness without significantly altering the color tone itself, making color calibration more intuitive and accurate.
 
-##### 4.2.4.2. Inverted Calibration (Optional)
+##### 4.2.4.2. Inverse Calibration (Optional)
 
 Tap the **"eye" icon** in the upper-right corner of the screen to enable **image inversion**. Then tap the corresponding **LAB threshold values** (L Min, L Max, A Min, A Max, B Min, B Max), and adjust the sliders on the right. Fine-tune the thresholds until the **target region appears in pure white**, ensuring optimal recognition accuracy.
 
@@ -227,7 +265,7 @@ If the detected line direction deviates significantly, tap the **“eye” icon*
 
 ##### 4.2.5.3. Data Output
 
-The module outputs the X-coordinate data of the upper endpoint (first target) and the lower endpoint (second target) of the green line segment in real time.
+The module outputs the X-coordinate data of the upper endpoint (first target) and the lower endpoint (second target) of the green line segment in real time (only in this app, other apps index targets from left to right).
 
 #### 4.2.6. Gesture Recognition
 
@@ -236,12 +274,12 @@ The module can recognize six predefined static gestures (supports both left and 
 The recognizable gestures are shown in the image below.
 
 >**Author's note**: here's the gesture description:
->1. Paper from "rock, paper, scissors": all fingers are straight.
->2. Rock from "rock, paper, scissors": a fist, all fingers are curled.
->3. Scissors from "rock, paper, scissors": only the index and middle fingers are straight.
->4. The "OK" gesture: the index finger making a ring with the thumb.
->5. The "Thumbs up" or "Like" gesture.
->6. Index, middle and pinky fingers are curled.
+>ID1. Paper from "rock, paper, scissors": all fingers are straight.
+>ID2. Rock from "rock, paper, scissors": a fist, all fingers are curled.
+>ID3. Scissors from "rock, paper, scissors": only the index and middle fingers are straight.
+>ID4. The "OK" gesture: the index finger making a ring with the thumb.
+>ID5. The "Thumbs up" or "Like" gesture.
+>ID6. Index, middle and pinky fingers are curled.
 
 When a gesture is detected, a colored bounding box will appear around the gesture, and the ID number will be displayed at the top-left corner of the box.
 
@@ -277,6 +315,8 @@ When a human body is detected, the module will dynamically annotate these keypoi
 | 15  | Right Knee     |
 | 16  | Left Ankle     |
 | 17  | Right Ankle    |
+
+Use `GetAICamStr(..);` and `GetAICamIDStr(..);` to read the values from this app.
 
 #### 4.2.8. Object Classification
 
@@ -344,16 +384,17 @@ Then, return to the programming interface, and you will see a new category named
 
 ### 5.2. RoboEXP
 
+| G icon name                       | C syntax                                                 | Description                                                                                                                                                                                                                                                                   | Parameters                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| --------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Set AICAM Mode (icon with wrench) | `SetAICam(_PORT_ which, uint8_t cmd);`                   | Set the AI Vision Module to a Specified Recognition Mode. Execute this block **after the AI module has fully powered on**.                                                                                                                                                    | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**cmd**: Mode index (1–11), corresponding to:<br>1. Camera<br>2. Face Recognition<br>3. AprilTag Recognition<br>4. QR Code Recognition<br>5. Object Detection<br>6. Color Recognition<br>7. Road Recognition<br>8. Gesture Recognition<br>9. Human Keypoint Detection<br>10. Object Classification<br>11. Image Classification                                                 |
+| Set AICAM Mode (icon with "ABC")  | `SetAICamCmd(_PORT_ which, string cmd);`                 | Set the AI CAM to a specified recognition mode. Execute this module **after the AI CAM has started up**.                                                                                                                                                                      | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**cmd**: *(Enter an English string)* Switch function: camera, face recognition (`face`), AprilTag recognition (`apriltag`), object recognition (`detector`), color recognition (`color`), road recognition (`road`), gesture recognition (`gesture`), human recognition (`human`), object classification (`classifier`), image classification (`image`), or a custom function. |
+| Wait to set AICAM Mode            | `SetWaitAICamCmd(_PORT_ which, string cmd);`             | Wait for the AI CAM to start up and switch to the specified recognition algorithm before continuing program execution. (Blocking)                                                                                                                                             | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**cmd**: *(Enter an English string)* Switch function: camera, face recognition (`face`), AprilTag recognition (`apriltag`), object recognition (`detector`), color recognition (`color`), road recognition (`road`), gesture recognition (`gesture`), human recognition (`human`), object classification (`classifier`), image classification (`image`), or a custom function. |
+| Read AICAM data                   | `GetAICam(_PORT_ which, uint8_t target, uint8_t cmd);`   | Get the **data** of the target recognized by the AI CAM                                                                                                                                                                                                                       | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**target**: Target index (1–20); targets on screen are indexed **from left to right**.<br>**cmd**: Data field (1–7), representing:<br>1. ID<br>2. X coordinate<br>3. Y coordinate<br>4. Width<br>5. Height<br>6. Size<br>7. Confidence                                                                                                                                         |
+| Read AICAM target name            | `GetAICamStr(_PORT_ which, uint8_t target);`             | Get the **name** of a target recognized by the AI CAM.<br><br>Some functions return the name of the recognized object. This module can be used for functions such as QR code recognition, barcode recognition*, object recognition, and human recognition.                    | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**target**: Target number (numbered from left to right on the screen): 1–20.                                                                                                                                                                                                                                                                                                   |
+| Read AICAM recognition ID data    | `GetAICamIDData(_PORT_ which, uint8_t ID, uint8_t cmd);` | Get **data** of a specified target (**ID**) recognized by the AI CAM.                                                                                                                                                                                                         | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**ID**: Specified target ID: 1–20.<br>**cmd**: Data field (1–7), representing:<br>1. ID<br>2. X coordinate<br>3. Y coordinate<br>4. Width<br>5. Height<br>6. Size<br>7. Confidence<br>**Return value range**: X coordinate (0–639), Y coordinate (0–479), width (0–639), height (0–479), size (0–100), confidence (0–100).                                                     |
+| Read AICAM recognition ID name    | `GetAICamIDStr(_PORT_ which, uint8_t ID);`               | Get the **name** of a specified target (**ID**) recognized by the AI CAM.<br><br>Some functions return the name of the recognized object. This module can be used for functions such as QR code recognition, barcode recognition*, object recognition, and human recognition. | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**ID**: Specified target ID: 1–20.                                                                                                                                                                                                                                                                                                                                             |
 
-| G icon name                       | C syntax                                                 | Description                                                                                                                                                                                                                                                                  | Parameters                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| --------------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Set AICAM Mode (a wrench on icon) | `SetAICam(_PORT_ which, uint8_t cmd);`                   | Set the AI Vision Module to a Specified Recognition Mode. Execute this block **after the AI module has fully powered on**.                                                                                                                                                   | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**cmd**: Mode index (1–11), corresponding to:<br>1. Camera<br>2. Face Recognition<br>3. AprilTag Recognition<br>4. QR Code Recognition<br>5. Object Detection<br>6. Color Recognition<br>7. Road Recognition<br>8. Gesture Recognition<br>9. Human Keypoint Detection<br>10. Object Classification<br>11. Image Classification                                                 |
-| Set AICAM Mode ("ABC" on icon)    | `SetAICamCmd(_PORT_ which, string cmd);`                 | Set the AI CAM to a specified recognition mode. Execute this module **after the AI CAM has started up**.                                                                                                                                                                     | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**cmd**: *(Enter an English string)* Switch function: camera, face recognition (`face`), AprilTag recognition (`apriltag`), object recognition (`detector`), color recognition (`color`), road recognition (`road`), gesture recognition (`gesture`), human recognition (`human`), object classification (`classifier`), image classification (`image`), or a custom function. |
-| Wait to set AICAM Mode            | `SetWaitAICamCmd(_PORT_ which, string cmd);`             | Wait for the AI CAM to start up and switch to the specified recognition algorithm before continuing program execution. (Blocking)                                                                                                                                            | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**cmd**: *(Enter an English string)* Switch function: camera, face recognition (`face`), AprilTag recognition (`apriltag`), object recognition (`detector`), color recognition (`color`), road recognition (`road`), gesture recognition (`gesture`), human recognition (`human`), object classification (`classifier`), image classification (`image`), or a custom function. |
-| Read AICAM data                   | `GetAICam(_PORT_ which, uint8_t target, uint8_t cmd);`   | Get the **data** of the target recognized by the AI CAM                                                                                                                                                                                                                      | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**target**: Target index (1–20); targets on screen are indexed **from left to right**.<br>**cmd**: Data field (1–7), representing:<br>1. ID<br>2. X coordinate<br>3. Y coordinate<br>4. Width<br>5. Height<br>6. Size<br>7. Confidence                                                                                                                                         |
-| Read AICAM target name            | `GetAICamStr(_PORT_ which, uint8_t target);`             | Get the **name** of a target recognized by the AI CAM.<br><br>Some functions return the name of the recognized object. This module can be used for functions such as QR code recognition, barcode recognition, object recognition, and human recognition.                    | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**target**: Target number (numbered from left to right on the screen): 1–20.                                                                                                                                                                                                                                                                                                   |
-| Read AICAM recognition ID data    | `GetAICamIDData(_PORT_ which, uint8_t ID, uint8_t cmd);` | Get **data** of a specified target (**ID**) recognized by the AI CAM.                                                                                                                                                                                                        | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**ID**: Specified target ID: 1–20.<br>**cmd**: Data field (1–7), representing:<br>1. ID<br>2. X coordinate<br>3. Y coordinate<br>4. Width<br>5. Height<br>6. Size<br>7. Confidence<br>**Return value range**: X coordinate (0–639), Y coordinate (0–479), width (0–639), height (0–479), size (0–100), confidence (0–100).                                                     |
-| Read AICAM recognition ID name    | `GetAICamIDStr(_PORT_ which, uint8_t ID);`               | Get the **name** of a specified target (**ID**) recognized by the AI CAM.<br><br>Some functions return the name of the recognized object. This module can be used for functions such as QR code recognition, barcode recognition, object recognition, and human recognition. | **which**: Port (\_P5\_ for M6-RCU, \_P8\_ for E6-RCU, \_P7\_ and \_P8\_ for E7-RCU).<br>**ID**: Specified target ID: 1–20.                                                                                                                                                                                                                                                                                                                                             |
+>\***Author's note**: barcode recognition is mentioned as an example of a custom application.
 
 ## 6. Interface Definition
 
@@ -380,7 +421,7 @@ The camera system is stored on a TF card. You can use a card reader to upgrade t
 **Changelog**:
 Increased the font size in **Settings** and added the **Auto Start on Boot, Backlight, Volume**, and **USB Settings** functions.
 
-### 1. v4.12.5, corresponds to `aicam-2026-06-10.img.xz` file
+### 2. v4.12.5, corresponds to `aicam-2026-06-10.img.xz` file
 
 [Download v4.12.5](https://zmrobo.top/yuque/Electronic_Hardware/AI_CAM/BE1756%20AI%20CAM-System%20image%20flashing%20v4.12.5.zip)
 
