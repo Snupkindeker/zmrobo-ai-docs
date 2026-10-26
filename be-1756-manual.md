@@ -92,6 +92,8 @@ This is an unofficial documentation for ZMROBO's AI CAM 2.0 (BE-1756), made by S
 | Power Supply             | Operating voltage: 4.5–5 V. Operating current: ≥200 mA, recommended power supply: ≥5V 500mA.                                                |
 | RTC                      | Onboard BM8653 RTC + coin-cell battery (backup timekeeping when powered off)                                                                |
 | Size                     | 20mm × 70mm × 63mm                                                                                                                          |
+| Supported controllers*   | E7-RCU, E6-RCU, M6-RCU                                                                                                                      |
+>**Author's note**: the supported controller list is based on the author's own experience, may be inaccurate.
 
 ## 3. Basic operations
 
@@ -441,4 +443,4 @@ Increased the font size in **Settings** and added the **Auto Start on Boot, Back
  - If entering any mode causes the app to immediately crash and return to the main screen, check whether the **Runtime Library** is installed under **Settings** → **Runtime Library**. If it is not installed, connect to Wi-Fi to install it.
  - If the controller cannot switch modes, check whether the program is running properly and whether the **PH-6P port** is functioning normally.
 
->**Author's note**: this is an unofficial, independent guide written by [Snupkindeker](https://github.com/Snupkindeker). The official Yuque article can be accessed here: https://www.yuque.com/zmrobo-en/hardware/dmlxxlggllouy9fu#XMdFv.
+>**Author's note**: this is an unofficial, independent guide written by [Snupkindeker](https://github.com/Snupkindeker). All the information is either gathered from public sources, or based on the author's own experience. The official Yuque article can be accessed here: https://www.yuque.com/zmrobo-en/hardware/dmlxxlggllouy9fu#XMdFv.
